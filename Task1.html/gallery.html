@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Modular Kitchen</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .gallery {
+            background-color: beige;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .item {
+            margin: 15px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .item img {
+            max-width: 100%;
+            border-radius: 8px 8px 0 0;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .item:hover {
+            transform: scale(1.1); /* Scale up the entire item on hover */
+        }
+
+        .item:hover img {
+            transform: scale(1.2); /* Scale up the image slightly more */
+        }
+
+        .price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        p {
+            margin: 10px 0;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Our Modular Kitchen Gallery</h1>
+        <div class="gallery">
+            <div class="item">
+                <img src="mod2.jpg" alt="Kitchen 1">
+                <p class="price">$1500</p>
+                <p>Modern modular kitchen with sleek design and efficient storage.</p>
+            </div>
+            <div class="item">
+                <img src="mod3.jpg" alt="Kitchen 2">
+                <p class="price">$1800</p>
+                <p>Elegant and spacious kitchen layout with premium finishes.</p>
+            </div>
+            <div class="item">
+                <img src="mod4.jpg" alt="Kitchen 3">
+                <p class="price">$2000</p>
+                <p>Luxury kitchen design with state-of-the-art appliances.</p>
+            </div>
+            <div class="item">
+                <img src="mod5.jpg" alt="Kitchen 4">
+                <p class="price">$2000</p>
+                <p>Luxury kitchen design with state-of-the-art appliances.</p>
+            </div>
+            <div class="item">
+                <img src="mod6.jpg" alt="Kitchen 5">
+                <p class="price">$2000</p>
+                <p>Luxury kitchen design with state-of-the-art appliances.</p>
+            </div>
+        </div>
+    </center>
+</body>
+</html>
