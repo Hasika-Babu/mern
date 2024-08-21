@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 20px;
+        }
+        input[type="text"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Home Page</h1>
+        <form id="myForm">
+            <input type="text" id="myTextBox" placeholder="Enter a value">
+            <button type="button" onclick="addToArray()">Add to Array</button>
+        </form>
+        <p><b>Check the browser's console to see the array's current state.</b></p>
+    </div>
+
+    <script>
+        // Initialize an empty array
+        let valuesArray = [];
+
+        // Function to handle button click
+        function addToArray() {
+            // Get the value from the textbox
+            const textBox = document.getElementById('myTextBox');
+            const value = textBox.value;
+
+            // Add the value to the array
+            if (value.trim() !== '') {
+                valuesArray.push(value);
+                // Clear the textbox
+                textBox.value = '';
+                // Print the current state of the array to the console
+                console.log('Current array:', valuesArray);
+            } else {
+                console.log('Textbox is empty');
+            }
+        }
+    </script>
+</body>
+</html>
