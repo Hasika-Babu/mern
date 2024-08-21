@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .sort-container {
+            margin: 20px;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 250px;
+            margin: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .product-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>E-commerce Store</h1>
+
+    <!-- Sort Dropdown -->
+    <div class="sort-container">
+        <label for="sort">Sort By: </label>
+        <select id="sort">
+            <option value="default">Default</option>
+            <option value="price-low-high">Price: Low to High</option>
+            <option value="price-high-low">Price: High to Low</option>
+            <option value="name-asc">Name: A to Z</option>
+            <option value="name-desc">Name: Z to A</option>
+        </select>
+    </div>
+
+    <div id="product-list" class="product-container">
+        <!-- Products will be displayed here -->
+    </div>
+
+    <script>
+        let products = [];
+
+        // Fetch products from API
+        function fetchProducts() {
+            fetch('https://fakestoreapi.com/products')
+                .then(response => response.json())
+                .then(data => {
+                    products = data;
+                    displayProducts(products);
+                })
+                .catch(error => console.error('Error fetching products:', error));
+        }
+
+        // Display products
+        function displayProducts(products) {
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = ''; // Clear previous content
+
+            products.forEach(product => {
+                // Create product card
+                const productCard = document.createElement('div');
+                productCard.className = 'product';
+
+                // Add product image
+                const productImage = document.createElement('img');
+                productImage.src = product.image;
+                productCard.appendChild(productImage);
+
+                // Add product title
+                const productTitle = document.createElement('h3');
+                productTitle.textContent = product.title;
+                productCard.appendChild(productTitle);
+
+                // Add product description
+                const productDescription = document.createElement('p');
+                productDescription.textContent = product.description.substring(0, 100) + '...';
+                productCard.appendChild(productDescription);
+
+                // Add product price
+                const productPrice = document.createElement('p');
+                productPrice.className = 'product-price';
+                productPrice.textContent = '$' + product.price;
+                productCard.appendChild(productPrice);
+
+                // Add product card to product list
+                productList.appendChild(productCard);
+            });
+        }
+
+        // Sort products
+        function sortProducts(criteria) {
+            let sortedProducts = [...products];
+
+            if (criteria === 'price-low-high') {
+                sortedProducts.sort((a, b) => a.price - b.price);
+            } else if (criteria === 'price-high-low') {
+                sortedProducts.sort((a, b) => b.price - a.price);
+            } else if (criteria === 'name-asc') {
+                sortedProducts.sort((a, b) => a.title.localeCompare(b.title));
+            } else if (criteria === 'name-desc') {
+                sortedProducts.sort((a, b) => b.title.localeCompare(a.title));
+            }
+
+            displayProducts(sortedProducts);
+        }
+
+        // Event listener for sort dropdown
+        document.getElementById('sort').addEventListener('change', function() {
+            const selectedOption = this.value;
+            sortProducts(selectedOption);
+        });
+
+        // Initial fetch and display of products
+        fetchProducts();
+    </script>
+
+</body>
+</html>

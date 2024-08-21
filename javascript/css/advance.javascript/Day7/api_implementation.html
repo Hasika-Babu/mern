@@ -1,0 +1,14 @@
+<script>
+    async function getUserList() {
+    let res =await fetch("https://reqres.in/api/users",{"method": "GET"});
+    let json =await res.json();//extract json response
+
+    for(let index in json['data']){
+        console.log(json['data'][index]['first_name']);
+        console.log(json['data'][index]['email']);
+        
+    }
+        
+    }
+    getUserList()
+</script>

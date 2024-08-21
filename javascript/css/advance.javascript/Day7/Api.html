@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>obj</title>
+    <script>
+        let personList =[{
+            "name":"Hasika",
+            "mobile": 9098765876,
+            "address": "chennai",
+            "name":"Ria" // the name Hasika is overwritten by Ria 
+        },
+        {
+            "name":"Hasi",
+            "mobile": 9045765876,
+            "address": "chennai",
+            "name":"gia" // the name Hasi is overwritten by gia 
+        }
+    ]
+        i = 0
+        for (i in personList){
+            console.log(personList[i]['name']);
+            console.log(personList[i]['mobile']);
+            console.log(personList[i]['address']);
+            
+            i = i+1
+        }
+        console.log(personList[2]['address']);//addr3
+        console.log(person['name']);
+        console.log(person['address']);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
