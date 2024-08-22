@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red-border {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<input type="text" id="input_id" placeholder="Enter something">
+<button id="check_id">Check</button>
+
+<script>
+    checkInput = () => {
+        const inputElement = document.querySelector("#input_id");
+        if (inputElement.value.trim() === "") {
+            inputElement.classList.add('red-border');
+        } else {
+            inputElement.classList.remove('red-border');
+        }
+    }
+
+    document.querySelector("#check_id").addEventListener("click", checkInput);
+</script>
+
+</body>
+</html>
