@@ -5,15 +5,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import {Provider} from 'react-redux';
 import Home from './Home';
 import Contact from './Contact';
-import about from './about';
-import Header from './header';
+import About from './About';
+import Header from './Header';
+import Web from './Web';
 import { myStore } from './linux/Config';
 
 let routerPaths = createBrowserRouter([
   {"path":"/Header","element":<Header/>},
-  {"path":"/home","element":<Home/>},
-  {"path":"/about","element":<about/>},
+  {"path":"/Home","element":<Home/>},
+  {"path":"/About","element":<About/>},
   {"path":"/Contact","element":<Contact/>},
+  {"path":"/Web","element":<Web/>},
  
 ])
 

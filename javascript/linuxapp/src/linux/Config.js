@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+
 const counterLogic = (state = 0, action) => {
     switch (action.type) {
         case "add":
@@ -14,8 +15,20 @@ const counterLogic = (state = 0, action) => {
     }
 };
 
+const storeMyDetailsReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "saveDetails":
+            console.log("Saving details:", action.data); // Log the data
+            return action.data;
+        default:
+            return state;
+    }
+};
+
+
 export const myStore = configureStore({
     reducer: {
-        counter: counterLogic,
+        "counter": counterLogic,
+        "myDetails": storeMyDetailsReducer
     }
 });
